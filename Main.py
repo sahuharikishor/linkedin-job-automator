@@ -7,13 +7,14 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.application import MIMEApplication
 import os
+from dotenv import load_dotenv
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 # LinkedIn account details  
 
-LINKEDIN_USERNAME = "sahuharikishor4@gmail.com"
-LINKEDIN_PASSWORD = "hariln@2006"
+LINKEDIN_USERNAME = os.getenv("LINKEDIN_USERNAME")
+LINKEDIN_PASSWORD = os.getenv("LINKEDIN_PASSWORD")
 
 def login_to_linkedin():
     try:
@@ -73,9 +74,9 @@ def search_jobs_and_extract_emails(driver):
     return emails
 
 
-SENDER_EMAIL = "sahuharikishor4@gmail.com"
-APP_PASSWORD = "vdeybsvjtkvnvsvx" 
-RESUME_FILE_PATH = r"D:\D-Drive\Harikishor sahu Resume(IITP).pdf" 
+SENDER_EMAIL = os.getenv("SENDER_EMAIL")
+APP_PASSWORD = os.getenv("APP_PASSWORD")
+RESUME_FILE_PATH = os.getenv("RESUME_PATH")
 
 def send_email_with_resume(receiver_email):
     print(f"Preparing to send email to: {receiver_email}")
